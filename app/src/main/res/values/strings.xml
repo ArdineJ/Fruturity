@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Fruturity</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_cart">Cart</string>
+    <string name="menu_profile">Profile</string>
+    <string name="price">Rp %d </string>
+    <string name="minus_symbol">—</string>
+    <string name="plus_symbol">＋</string>
+    <string name="add_to_cart">Add to Cart : Rp %d </string>
+    <string name="total_order">Total: Rp %d </string>
+    <string name="back">Back</string>
+</resources>
