@@ -1,5 +1,6 @@
 package com.ardine.fruturity.ui.screen.detail
 
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -28,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -76,7 +78,11 @@ fun DetailScreen(
                     }
                 )
             }
-            is ResultState.Error -> {}
+            is ResultState.Error -> {
+                Toast.makeText(LocalContext.current,R.string.empty_msg, Toast.LENGTH_SHORT).show()
+            }
+
+            else -> {}
         }
     }
 }
@@ -100,7 +106,7 @@ fun DetailContent(
         modifier = modifier
     ) {
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .verticalScroll(rememberScrollState())
                 .weight(1f)
         ) {
@@ -117,7 +123,7 @@ fun DetailContent(
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = stringResource(R.string.back),
-                    modifier = Modifier
+                    modifier = modifier
                         .padding(16.dp)
                         .clickable { onBackClick() }
                 )
@@ -160,7 +166,7 @@ fun DetailContent(
                         ),
                     )
                     Text(
-                        text = "*KG",
+                        text = stringResource(R.string.kg),
                         style = MaterialTheme.typography.bodySmall,
                     )
 
@@ -177,7 +183,8 @@ fun DetailContent(
                 }
             }
         }
-        Spacer(modifier = Modifier
+        Spacer(
+            modifier = modifier
             .fillMaxWidth()
             .height(4.dp))
         OrderButton(

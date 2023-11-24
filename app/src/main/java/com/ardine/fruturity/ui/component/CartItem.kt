@@ -24,7 +24,7 @@ import com.ardine.fruturity.ui.theme.FruturityTheme
 
 @Composable
 fun CartItem(
-    rewardId: Long,
+    fruitId: Long,
     image: Int,
     title: String,
     totalPrice: Int,
@@ -42,10 +42,9 @@ fun CartItem(
             modifier = modifier
                 .size(90.dp)
                 .clip(RoundedCornerShape(8.dp))
-
         )
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(8.dp)
                 .weight(1.0f)
@@ -67,12 +66,12 @@ fun CartItem(
                 style = MaterialTheme.typography.titleSmall,
             )
         }
-        ProductCounter(
-            orderId = rewardId,
+        Counter(
+            orderId = fruitId,
             orderCount = count,
-            onProductIncreased = { onProductCountChanged(rewardId, count + 1) },
-            onProductDecreased = { onProductCountChanged(rewardId, count - 1) },
-            modifier = Modifier.padding(8.dp)
+            onProductIncreased = { onProductCountChanged(fruitId, count + 1) },
+            onProductDecreased = { onProductCountChanged(fruitId, count - 1) },
+            modifier = modifier.padding(8.dp)
         )
     }
 }

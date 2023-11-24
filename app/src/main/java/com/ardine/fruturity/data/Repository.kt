@@ -21,6 +21,15 @@ class Repository {
         return flowOf(order)
     }
 
+    fun searchFruits(query: String): Flow<List<FruitOrder>> {
+        return getAllFruits()
+            .map { result ->
+                result.filter {
+                    it.fruits.title.contains(query, ignoreCase = true)
+                }
+        }
+    }
+
     fun getFruitOrderById(fruitId : Long): FruitOrder{
         return order.first {
             it.fruits.id == fruitId

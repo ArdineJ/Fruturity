@@ -39,7 +39,7 @@ fun Items (
     ) {
         Image(
             painter = painterResource(image),
-            contentDescription = title,
+            contentDescription = "Image of $title",
             contentScale = ContentScale.Crop,
             modifier = modifier
                 .size(180.dp)
@@ -74,6 +74,6 @@ fun Items (
 @Preview(showBackground = true)
 fun ItemsPreview(){
     FruturityTheme {
-        Items(image = R.drawable.watermelon, title = "Watermelon" , price = 10000)
+        Items(image = R.drawable.banana, title = "Banana" , price = 10000)
     }
 }

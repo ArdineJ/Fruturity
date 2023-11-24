@@ -32,7 +32,8 @@ fun OrderButton(
     ) {
         Text(
             text = text,
-            modifier = Modifier.align(Alignment.CenterVertically)
+            modifier = Modifier
+                .align(Alignment.CenterVertically)
         )
     }
 }

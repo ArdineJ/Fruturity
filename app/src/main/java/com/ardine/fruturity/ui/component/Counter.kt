@@ -45,7 +45,7 @@ fun Counter(
             modifier = Modifier.size(30.dp)
         ) {
             Text(
-                text = "—",
+                text = "-",
                 fontSize = 22.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -72,7 +72,7 @@ fun Counter(
             modifier = Modifier.size(30.dp)
         ) {
             Text(
-                text = "＋",
+                text = "+",
                 fontSize = 22.sp,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
@@ -85,7 +85,7 @@ fun Counter(
     }
 }
 
-@Preview
+@Preview (showBackground = true)
 @Composable
 fun CounterPreview() {
     FruturityTheme {

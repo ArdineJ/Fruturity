@@ -9,4 +9,12 @@
     <string name="add_to_cart">Add to Cart : Rp %d </string>
     <string name="total_order">Total: Rp %d </string>
     <string name="back">Back</string>
+    <string name="empty_cart_message">Your cart is empty</string>
+    <string name="placeholder_search">Search Your Fruit…</string>
+    <string name="me">Ardine Jivensen</string>
+    <string name="email">ardinejivensen@gmail.com</string>
+    <string name="fruturity_shop">Fruturity Shop</string>
+    <string name="share_message">Hey, I\'d like to purchase %1$d items on Fruturity Shop, totaling Rp %2$d. Are you interested too?</string>
+    <string name="empty_msg">Nothing to Display</string>
+    <string name="kg">/Kg</string>
 </resources>

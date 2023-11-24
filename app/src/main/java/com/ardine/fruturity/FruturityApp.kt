@@ -1,11 +1,12 @@
 package com.ardine.fruturity
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -14,6 +15,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -32,7 +34,6 @@ import com.ardine.fruturity.ui.screen.home.HomeScreen
 import com.ardine.fruturity.ui.screen.profile.ProfileScreen
 import com.ardine.fruturity.ui.theme.FruturityTheme
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FruturityApp (
     modifier: Modifier = Modifier,
@@ -52,7 +53,7 @@ fun FruturityApp (
         NavHost(
             navController = navController,
             startDestination = Screen.Home.route,
-            modifier = Modifier
+            modifier = modifier
                 .padding(innerPadding)
         ){
             composable(Screen.Home.route){
@@ -63,11 +64,11 @@ fun FruturityApp (
                 )
             }
             composable(Screen.Cart.route){
-//                val context = LocalContext.current
+                val context = LocalContext.current
                 CartScreen(
-//                    onOrderButtonClicked = { message ->
-//                        shareOrder(context, message)
-//                    }
+                    onOrderButtonClicked = { message ->
+                        shareOrder(context, message)
+                    }
                 )
             }
             composable(Screen.Profile.route){
@@ -109,7 +110,7 @@ private fun BottomBar(
         modifier = modifier
     ){
         val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
+            val currentRoute = navBackStackEntry?.destination?.route
         val navigationItems = listOf(
             NavigationItem(
                 title = stringResource(id = R.string.menu_home),
@@ -151,20 +152,21 @@ private fun BottomBar(
     }
 }
 
-//private fun shareOrder(context: Context, summary:String) {
-//    val intent = Intent(Intent.ACTION_SEND).apply {
-//        type = "text/plain"
-//        putExtra(Intent.EXTRA_SUBJECT, "TESTING")
-//        putExtra(Intent.EXTRA_TEXT, summary)
-//    }
-//
-//    context.startActivity(
-//        Intent.createChooser(
-//            intent,
-//            "TESTING"
-//        )
-//    )
-//}
+
+private fun shareOrder(context: Context, summary:String) {
+    val intent = Intent(Intent.ACTION_SEND).apply {
+        type = "text/plain"
+        putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.fruturity_shop))
+        putExtra(Intent.EXTRA_TEXT, summary)
+    }
+
+    context.startActivity(
+        Intent.createChooser(
+            intent,
+            context.getString(R.string.fruturity_shop)
+        )
+    )
+}
 
 @Preview(showBackground = true)
 @Composable
